@@ -27,11 +27,17 @@ public class OrderTest {
     @Before
     public void setUp() {
         user = UserGenerator.getUser();
-        ingredients = IngredientsGenerator.getIngredients();
-        ingredientsEmpty = IngredientsGenerator.getIngredientsEmpty();
-        ingredientsIncorrect = IngredientsGenerator.getIngredientsIncorrect();
+        ingredients = IngredientsGenerator.getIngredients(new String[]{"61c0c5a71d1f82001bdaaa6c", "61c0c5a71d1f82001bdaaa70"});
+        ingredientsEmpty = IngredientsGenerator.getIngredients(new String[]{});
+        ingredientsIncorrect = IngredientsGenerator.getIngredients(new String[]{"invalidId"});
         userClient = new UserClient();
         orderClient = new OrderClient();
+    }
+
+    @Test
+    public void testGetIngredients() {
+        String[] ingredientIds = {"61c0c5a71d1f82001bdaaa6c", "61c0c5a71d1f82001bdaaa70"};
+        Ingredients ingredients = IngredientsGenerator.getIngredients(ingredientIds);
     }
 
     @Test
